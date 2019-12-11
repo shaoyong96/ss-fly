@@ -109,7 +109,8 @@ install_bbr() {
 	    
 	if [[ x"${os}" == x"centos" ]]; then
         	install_elrepo
-        	yum --enablerepo=elrepo-kernel -y install kernel-ml kernel-ml-devel
+        	#yum --enablerepo=elrepo-kernel -y install kernel-ml kernel-ml-devel
+                yum --enablerepo=elrepo-kernel install kernel-lt
         	if [ $? -ne 0 ]; then
             		echo -e "[${red}错误${plain}] 安装内核失败，请自行检查。"
             		exit 1
@@ -232,7 +233,7 @@ install_elrepo() {
     rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 
     if centosversion 6; then
-        rpm -Uvh http://www.elrepo.org/elrepo-release-6-8.el6.elrepo.noarch.rpm
+        rpm -Uvh http://www.elrepo.org/elrepo-release-6-9.el6.elrepo.noarch.rpm
     elif centosversion 7; then
         rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
     fi
