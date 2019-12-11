@@ -109,8 +109,7 @@ install_bbr() {
 	    
 	if [[ x"${os}" == x"centos" ]]; then
         	install_elrepo
-        	#yum --enablerepo=elrepo-kernel -y install kernel-ml kernel-ml-devel
-                yum --enablerepo=elrepo-kernel install kernel-lt
+        	yum --enablerepo=elrepo-kernel -y install kernel-ml kernel-ml-devel kernel-lt
         	if [ $? -ne 0 ]; then
             		echo -e "[${red}错误${plain}] 安装内核失败，请自行检查。"
             		exit 1
